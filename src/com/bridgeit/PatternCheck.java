@@ -50,13 +50,29 @@ public class PatternCheck {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("enterEmail ID : ");
 		while (true) {
-			String lName = scanner.next();
-			if (Pattern.matches(pattern, lName)) {
-				registration.setLastName(lName);
+			String email = scanner.nextLine();
+			if (Pattern.matches(pattern, email)) {
+				registration.setLastName(email);
 				break;
 			}
 			else
 				System.out.println("enter valid email as ");
+		}
+	}
+
+	public void password() {
+
+		String pattern = "^[1-9]{2}[\\s][6-9][0-9]{9}$";
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enter phone number : ");
+		while (true) {
+			String phoneNumber = scanner.nextLine();
+			if (Pattern.matches(pattern, phoneNumber)) {
+				registration.setPhoneNumber(phoneNumber);
+				break;
+			}
+			else
+				System.out.println("enter valid phone number ");
 		}
 	}
 }
