@@ -78,7 +78,7 @@ public class PatternCheck {
 
 	public void passwordPattern() {
 		
-		String pattern = "^(?=.*[A-Z])(?=.*[a-z])[A-Za-z]{8,}$";
+		String pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$";
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("enter password with min 8 characters at least one upper case : ");
 		while (true) {
