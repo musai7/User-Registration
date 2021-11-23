@@ -1,5 +1,7 @@
 package com.bridgeit;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -97,17 +99,25 @@ public class PatternCheck {
 
 	public void sampleEmailsChecking() throws IOException {
 
-		String pattern = "^[a-zA-Z0-9]+([-_+.a-zA-Z0-9])*@[A-Za-z]+.[A-Za-z]+(.[A-Za-z]{2})*$";
+		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*@[A-Za-z0-9]{1,}.[A-Za-z]{2,}(.[A-Za-z]{2,})*$";
 		String filePath = "C:\\Users\\musai\\rfp-java\\practice\\shankar rpf-80\\User-Registration\\src\\com\\bridgeit\\differentEmails";
 		List<String> lines = new ArrayList<String>();
 		Path path = Paths.get(filePath);
 		lines = Files.readAllLines(path);
 
+		BufferedWriter writer; 
+		writer = new BufferedWriter(new FileWriter("C:\\Users\\musai\\rfp-java\\practice\\shankar rpf-80\\User-Registration\\src\\com\\bridgeit\\differentEmailsResults"));
+		
+		
 		for (String line : lines) {
 			if (Pattern.matches(pattern, line)) {
 				System.out.println("EMAIL ID --> " + line + " --> VALIDE EMAIL");
-			} else
+				writer.write("EMAIL ID --> " + line + " --> VALIDE EMAIL \n");
+			} else {
 				System.out.println("EMAIL ID --> " + line + " --> INVALIDE EMAIL");
+				writer.write("EMAIL ID --> " + line + " --> INVALIDE EMAIL \n");
+			}
 		}
+		writer.close();
 	}
 }
