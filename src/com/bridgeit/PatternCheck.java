@@ -60,7 +60,7 @@ public class PatternCheck {
 		}
 	}
 
-	public void password() {
+	public void phoneNumber() {
 
 		String pattern = "^[1-9]{2}[\\s][6-9][0-9]{9}$";
 		Scanner scanner = new Scanner(System.in);
@@ -74,5 +74,21 @@ public class PatternCheck {
 			else
 				System.out.println("enter valid phone number ");
 		}
+	}
+
+	public void passwordPattern() {
+		
+		String pattern = "^[0-9A-Za-z]{8,}";
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enter password : ");
+		while (true) {
+			String password = scanner.nextLine();
+			if (Pattern.matches(pattern, password)) {
+				registration.setPassword(password);
+				break;
+			}
+			else
+				System.out.println("enter valide password ");
+		}	
 	}
 }
