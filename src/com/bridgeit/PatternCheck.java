@@ -43,4 +43,20 @@ public class PatternCheck {
 		System.out.println(registration);
 		
 	}
+
+	public void emailIdPattern() {
+		
+		String pattern = "^[a-zA-Z0-9]+([-_+.a-zA-Z0-9])*@[A-Za-z]+.[A-Za-z]+(.[A-Za-z]{2})*$";
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enterEmail ID : ");
+		while (true) {
+			String lName = scanner.next();
+			if (Pattern.matches(pattern, lName)) {
+				registration.setLastName(lName);
+				break;
+			}
+			else
+				System.out.println("enter valid email as ");
+		}
+	}
 }

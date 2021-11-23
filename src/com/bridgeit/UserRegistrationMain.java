@@ -7,6 +7,7 @@ public class UserRegistrationMain {
 		PatternCheck check = new PatternCheck();
 		check.firstNamePattern();
 		check.lastNamePattern();
+		check.emailIdPattern();
 		check.printResult();
 	}
 }
