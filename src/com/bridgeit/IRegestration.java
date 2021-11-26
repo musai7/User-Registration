@@ -2,13 +2,13 @@ package com.bridgeit;
 
 public interface IRegestration {
 	
-	public void firstNamePattern();
+	public boolean firstNamePattern(String fName);
 
-	public void lastNamePattern();
+	public boolean lastNamePattern(String lName);
 
-	public void phoneNumber();
+	public boolean phoneNumber(String phoneNumber);
 	
-	public void passwordPattern();
+	public boolean passwordPattern(String password );
 
-	public void emailIdPattern();
+	public boolean emailIdPattern(String email);
 }

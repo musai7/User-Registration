@@ -15,35 +15,26 @@ public class PatternCheck implements IRegestration{
 
 	UserRegistration registration = new UserRegistration();
 
-	public void firstNamePattern() {
+	public boolean firstNamePattern(String fName) {
 
 		String pattern = "^[A-Z]{1}[a-z]{2,}";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter first name");
-
-		while (true) {
-			String fName = scanner.next();
 			if (Pattern.matches(pattern, fName)) {
-				registration.setFirstName(fName);
-				break;
+				//registration.setFirstName(fName);
+				return true;	
 			} else
-				System.out.println("enter valid first name as -->Xyz...");
-		}
+				System.out.println("Invalid first name ");
+			return false;
 	}
 
-	public void lastNamePattern() {
+	public boolean lastNamePattern(String lName) {
 
 		String pattern = "^[A-Z]{1}[a-z]{2,}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter last name : ");
-		while (true) {
-			String lName = scanner.next();
 			if (Pattern.matches(pattern, lName)) {
-				registration.setLastName(lName);
-				break;
+				//registration.setLastName(lName);
+				return true;
 			} else
-				System.out.println("enter valid last name as -->Xyz...");
-		}
+				System.out.println("invalid last name");
+			return false;
 	}
 
 	public void printResult() {
@@ -51,50 +42,39 @@ public class PatternCheck implements IRegestration{
 
 	}
 
-	public void emailIdPattern() {
+	public boolean emailIdPattern(String email) {
 
 		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*[@]([A-Za-z0-9])+[.][A-Za-z]{2,}([.][A-Za-z]{2,}){0,1}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enterEmail ID : ");
-		while (true) {
-			String email = scanner.nextLine();
+		
 			if (Pattern.matches(pattern, email)) {
-				registration.setLastName(email);
-				break;
+				//registration.setLastName(email);
+				return true;
 			} else
-				System.out.println("enter valid email as ");
-		}
+				System.out.println("Invalid email as ");
+			return false;
 	}
 
-	public void phoneNumber() {
+	public boolean phoneNumber(String phoneNumber) {
 
 		String pattern = "^[1-9]{2}[\\s][6-9][0-9]{9}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter phone number : ");
-		while (true) {
-			String phoneNumber = scanner.nextLine();
 			if (Pattern.matches(pattern, phoneNumber)) {
-				registration.setPhoneNumber(phoneNumber);
-				break;
+				//registration.setPhoneNumber(phoneNumber);
+				return true;
 			} else
 				System.out.println("enter valid phone number ");
-		}
+			return false;
 	}
 
-	public void passwordPattern() {
+	public boolean passwordPattern(String password) {
 
 		String pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println(
-				"enter password with min 8 characters at least one upper case, one digit and one special characters : ");
-		while (true) {
-			String password = scanner.nextLine();
 			if (Pattern.matches(pattern, password)) {
-				registration.setPassword(password);
-				break;
+				//registration.setPassword(password);
+				return true;
 			} else
-				System.out.println("enter valide password ");
-		}
+				System.out.println("Invalide password ");
+			return false;
+			
 	}
 
 	public void sampleEmailsChecking() throws IOException {
