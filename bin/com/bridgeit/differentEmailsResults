@@ -17,6 +17,6 @@ EMAIL ID --> abc()*@gmail.com --> INVALIDE EMAIL
 EMAIL ID --> abc@%*.com --> INVALIDE EMAIL 
 EMAIL ID --> abc..2002@gmail.com --> INVALIDE EMAIL 
 EMAIL ID --> abc.@gmail.com11 --> INVALIDE EMAIL 
-EMAIL ID --> abc@abc@gmail.com --> VALIDE EMAIL 
+EMAIL ID --> abc@abc@gmail.com --> INVALIDE EMAIL 
 EMAIL ID --> abc@gmail.com.1a --> INVALIDE EMAIL 
-EMAIL ID --> abc@gmail.com.aa.au --> VALIDE EMAIL 
+EMAIL ID --> abc@gmail.com.aa.au --> INVALIDE EMAIL 
