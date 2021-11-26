@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class PatternCheck {
+public class PatternCheck implements IRegestration{
 
 	UserRegistration registration = new UserRegistration();
 
@@ -53,7 +53,7 @@ public class PatternCheck {
 
 	public void emailIdPattern() {
 
-		String pattern = "^[a-zA-Z0-9]+([-_+.a-zA-Z0-9])*@[A-Za-z]+.[A-Za-z]+(.[A-Za-z]{2})*$";
+		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*[@]([A-Za-z0-9])+[.][A-Za-z]{2,}([.][A-Za-z]{2,}){0,1}$";
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("enterEmail ID : ");
 		while (true) {
@@ -98,8 +98,8 @@ public class PatternCheck {
 	}
 
 	public void sampleEmailsChecking() throws IOException {
-
-		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*@[A-Za-z0-9]{1,}.[A-Za-z]{2,}(.[A-Za-z]{2,})*$";
+		
+		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*[@]([A-Za-z0-9])+[.][A-Za-z]{2,}([.][A-Za-z]{2,}){0,1}$";
 		String filePath = "C:\\Users\\musai\\rfp-java\\practice\\shankar rpf-80\\User-Registration\\src\\com\\bridgeit\\differentEmails";
 		List<String> lines = new ArrayList<String>();
 		Path path = Paths.get(filePath);
