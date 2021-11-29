@@ -3,100 +3,150 @@ package com.bridgeit;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class UserRegestrationTest {
 
-	static UserRegestrationPatterns patternCheck;
-	
-	@BeforeClass
-	public static void initialization() {
-		patternCheck = new UserRegestrationPatterns();
-	}
-	
+	static UserRegestrationPatterns patterns;
+
 	@Test
 	public void first_Name_Pattern_Test() {
-		
-		assertTrue(patternCheck.firstNamePattern("Musai"));	
+		patterns = new UserRegestrationPatterns(null, null, null, null, null);
+		try {
+			assertTrue(patterns.firstNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void first_Name_Pattern_Test1() {
-		
-		assertFalse(patternCheck.firstNamePattern("sdfghj"));	
+		patterns = new UserRegestrationPatterns("", null, null, null, null);
+		try {
+			assertFalse(patterns.firstNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
+
 	@Test
 	public void first_Name_Pattern_Test2() {
-		
-		assertFalse(patternCheck.firstNamePattern("sd fghj"));	
+		patterns = new UserRegestrationPatterns("Musai", null, null, null, null);
+		try {
+			assertTrue(patterns.firstNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
+
 	@Test
 	public void last_Name_Pattern_Test() {
-		
-		assertTrue(patternCheck.lastNamePattern("Borra"));
+		patterns = new UserRegestrationPatterns("Musai", null, null, null, null);
+		try {
+			assertTrue(patterns.lastNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void last_Name_Pattern_Test1() {
-		
-		assertFalse(patternCheck.lastNamePattern("741"));
+		patterns = new UserRegestrationPatterns("Musai", "", null, null, null);
+		try {
+			assertFalse(patterns.lastNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
+
 	@Test
 	public void last_Name_Pattern_Test2() {
-		
-		assertFalse(patternCheck.lastNamePattern("Mani "));
+		patterns = new UserRegestrationPatterns("Musai", "Borra", null, null, null);
+		try {
+			assertTrue(patterns.lastNamePattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void password_Pattern_Test() {
-		
-		assertTrue(patternCheck.passwordPattern("MAnh@#65454"));
+		patterns = new UserRegestrationPatterns("Musai", "Borra", null, null, null);
+		try {
+			assertTrue(patterns.passwordPattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void password_Pattern_Test1() {
-		
-		assertFalse(patternCheck.passwordPattern("asdfghj7410"));
+		patterns = new UserRegestrationPatterns("Musai", "", "", null, null);
+		try {
+			assertFalse(patterns.passwordPattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void password_Pattern_Test2() {
-		
-		assertFalse(patternCheck.passwordPattern("hj7 410"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", null, null);
+		try {
+			assertTrue(patterns.passwordPattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void phone_Number_Pattern_Test() {
-		
-		assertTrue(patternCheck.phoneNumber("91 9876543210"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", null, null);
+		try {
+			assertTrue(patterns.phoneNumber());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void phone_Number_Pattern_Test1() {
-		
-		assertFalse(patternCheck.phoneNumber("919876543210"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210", null);
+		try {
+			assertTrue(patterns.phoneNumber());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void phone_Number_Pattern_Test2() {
-		
-		assertFalse(patternCheck.phoneNumber("91987 6543 210"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "", null);
+		try {
+			assertFalse(patterns.phoneNumber());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void email_Pattern_Test() {
-		
-		assertTrue(patternCheck.emailIdPattern("musaishankar307@gmail.com"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210", null);
+		try {
+			assertTrue(patterns.emailIdPattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@Test
 	public void email_Pattern_Test1() {
-		
-		assertFalse(patternCheck.emailIdPattern("musaishankar@gmail307@gmail.com"));
+		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210",
+				"musaishankar307@gmail.com");
+		try {
+			assertTrue(patterns.emailIdPattern());
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
 }
