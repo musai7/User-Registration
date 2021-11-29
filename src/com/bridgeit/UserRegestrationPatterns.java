@@ -1,3 +1,4 @@
+
 package com.bridgeit;
 
 import java.io.BufferedWriter;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class PatternCheck implements IRegestration{
+public class UserRegestrationPatterns implements IRegestration{
 
 	UserRegistration registration = new UserRegistration();
 
@@ -48,6 +49,7 @@ public class PatternCheck implements IRegestration{
 		
 			if (Pattern.matches(pattern, email)) {
 				//registration.setLastName(email);
+				System.out.println("valide mail");
 				return true;
 			} else
 				System.out.println("Invalid email as ");

@@ -17,7 +17,7 @@ public class EmailsTest {
 	private String email;
 	boolean expectedResult;
 
-	private static PatternCheck patternCheck;
+	private static UserRegestrationPatterns patternCheck;
 
 	public EmailsTest(String email, boolean expectedResult) {
 		super();
@@ -27,7 +27,7 @@ public class EmailsTest {
 
 	@BeforeClass
 	public static void initialization() {
-		patternCheck = new PatternCheck();
+		patternCheck = new UserRegestrationPatterns();
 	}
 
 	@Parameterized.Parameters

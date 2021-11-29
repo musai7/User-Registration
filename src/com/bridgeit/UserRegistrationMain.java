@@ -6,7 +6,7 @@ public class UserRegistrationMain {
 
 	public static void main(String[] args) throws IOException {
 
-		PatternCheck check = new PatternCheck();
+		UserRegestrationPatterns check = new UserRegestrationPatterns();
 		check.firstNamePattern("Musai");
 		check.lastNamePattern("Borra");
 		check.emailIdPattern("musaiShankar307@gmail.com");
