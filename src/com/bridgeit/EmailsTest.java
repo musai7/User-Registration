@@ -44,8 +44,8 @@ public class EmailsTest {
 	}
 
 	@Test
-	public void email_Pattern_Test() {
+	public void email_Pattern_Test() throws InvalideUserDetailsException {
 
-		assertEquals(expectedResult,patternCheck.emailIdPattern(this.email));
+		assertEquals(expectedResult,patternCheck.emailIdPattern());
 	}
 }
