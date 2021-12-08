@@ -3,148 +3,186 @@ package com.bridgeit;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 public class UserRegestrationTest {
 
-	static UserRegestrationPatterns patterns;
+	UserRegestrationPatterns userRegestrationPatterns = new UserRegestrationPatterns();
+	Scanner scanner = new Scanner(System.in);
 
 	@Test
-	public void first_Name_Pattern_Test() {
-		patterns = new UserRegestrationPatterns(null, null, null, null, null);
+	public void first_Name_Pattern_Test() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter first name : ");
+			return Pattern.matches(patterns.firstNamePattern, scanner.next());
+		});
+		assertTrue(result);
+	}
+
+	@Test
+	public void first_Name_Pattern_Test1() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter negitive first name : ");
+			return Pattern.matches(patterns.firstNamePattern, scanner.next());
+		});
+		assertFalse(result);
+	}
+	
+	@Test
+	public void first_Name_Pattern_Test3() {
+
+		boolean result = false;
 		try {
-			assertTrue(patterns.firstNamePattern());
+			result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+				return Pattern.matches(patterns.firstNamePattern, null);
+			});
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
+		assertFalse(result);
+	}
+
+	@Test
+	public void last_Name_Pattern_Test2() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter false last name : ");
+			return Pattern.matches(patterns.lastNamePattern, scanner.next());
+		});
+
+		assertFalse(result);
+	}
+
+	@Test
+	public void last_Name_Pattern_Test() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter last name : ");
+			return Pattern.matches(patterns.lastNamePattern, scanner.next());
+		});
+
+		assertTrue(result);
+	}
+	
+	@Test
+	public void last_Name_Pattern_Test3()  {
+
+		boolean result = false;
+		try {
+			result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+				return Pattern.matches(patterns.lastNamePattern, null);
+			});
+			assertTrue(result);
 		} catch (InvalideUserDetailsException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void first_Name_Pattern_Test1() {
-		patterns = new UserRegestrationPatterns("", null, null, null, null);
+	public void password_Pattern_Test() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter password : ");
+			return Pattern.matches(patterns.passwordPattern, scanner.next());
+		});
+
+		assertTrue(result);
+	}
+
+	@Test
+	public void password_Pattern_Test2() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter false password : ");
+			return Pattern.matches(patterns.passwordPattern, scanner.next());
+		});
+
+		assertFalse(result);
+	}
+	
+	@Test
+	public void password_Pattern_Test3() {
+
+		boolean result = false;
 		try {
-			assertFalse(patterns.firstNamePattern());
+			result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+				return Pattern.matches(patterns.passwordPattern, null);
+			});
+		} catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
+
+		assertFalse(result);
+	}
+
+	@Test
+	public void phone_Number_Pattern_Test() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter phone number : ");
+			return Pattern.matches(patterns.phoneNumberPattern, scanner.nextLine());
+		});
+		assertTrue(result);
+	}
+
+	@Test
+	public void phone_Number_Pattern_Test2() throws InvalideUserDetailsException {
+
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter false phone number : ");
+			return Pattern.matches(patterns.phoneNumberPattern, scanner.next());
+		});
+		assertFalse(result);
+	}
+	
+	@Test
+	public void phone_Number_Pattern_Test3() {
+
+		boolean result =false;
+		try {
+			result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+				return Pattern.matches(patterns.phoneNumberPattern, null);
+			});
+			assertFalse(result);
 		} catch (InvalideUserDetailsException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void first_Name_Pattern_Test2() {
-		patterns = new UserRegestrationPatterns("Musai", null, null, null, null);
-		try {
-			assertTrue(patterns.firstNamePattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
+	public void email_Pattern_Test() throws InvalideUserDetailsException {
+	
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter emailId : ");
+			return Pattern.matches(patterns.emailPattern, scanner.next());
+		});
+		assertTrue(result);
 	}
 
 	@Test
-	public void last_Name_Pattern_Test() {
-		patterns = new UserRegestrationPatterns("Musai", null, null, null, null);
-		try {
-			assertTrue(patterns.lastNamePattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
+	public void email_Pattern_Test2() throws InvalideUserDetailsException {
 
-	@Test
-	public void last_Name_Pattern_Test1() {
-		patterns = new UserRegestrationPatterns("Musai", "", null, null, null);
-		try {
-			assertFalse(patterns.lastNamePattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
+		boolean result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+			System.out.println("enter false emailId : ");
+			return Pattern.matches(patterns.emailPattern, scanner.next());
+		});
+		assertFalse(result);
 	}
-
+	
 	@Test
-	public void last_Name_Pattern_Test2() {
-		patterns = new UserRegestrationPatterns("Musai", "Borra", null, null, null);
-		try {
-			assertTrue(patterns.lastNamePattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
+	public void email_Pattern_Test3()  {
 
-	@Test
-	public void password_Pattern_Test() {
-		patterns = new UserRegestrationPatterns("Musai", "Borra", null, null, null);
+		boolean result = true;
 		try {
-			assertTrue(patterns.passwordPattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void password_Pattern_Test1() {
-		patterns = new UserRegestrationPatterns("Musai", "", "", null, null);
-		try {
-			assertFalse(patterns.passwordPattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void password_Pattern_Test2() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", null, null);
-		try {
-			assertTrue(patterns.passwordPattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void phone_Number_Pattern_Test() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", null, null);
-		try {
-			assertTrue(patterns.phoneNumber());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void phone_Number_Pattern_Test1() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210", null);
-		try {
-			assertTrue(patterns.phoneNumber());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void phone_Number_Pattern_Test2() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "", null);
-		try {
-			assertFalse(patterns.phoneNumber());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void email_Pattern_Test() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210", null);
-		try {
-			assertTrue(patterns.emailIdPattern());
-		} catch (InvalideUserDetailsException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void email_Pattern_Test1() {
-		patterns = new UserRegestrationPatterns("Musai", "", "MNBdfgh741@#$%", "91 9874563210",
-				"musaishankar307@gmail.com");
-		try {
-			assertTrue(patterns.emailIdPattern());
+			result = userRegestrationPatterns.patternCheckFunction(patterns -> {
+				return Pattern.matches(patterns.emailPattern, null);
+			});
+			assertFalse(result);
 		} catch (InvalideUserDetailsException e) {
 			e.printStackTrace();
 		}
