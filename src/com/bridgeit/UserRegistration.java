@@ -7,6 +7,17 @@ public class UserRegistration {
 	String phoneNumber;
 	String eMail;
 	String password;
+	
+	static UserRegistration instance ;
+	private UserRegistration() {
+		
+	}
+	
+	public static UserRegistration getInstance() {
+		if(instance == null)
+			instance = new UserRegistration();
+		return instance;
+	}
 
 	public String getFirstName() {
 		return firstName;
